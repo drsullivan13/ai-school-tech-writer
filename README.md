@@ -21,3 +21,13 @@ Embrace your creativity and personalize this project to craft a solution that un
 - **Sensitive Information:** If your implementation involves sensitive information, you are not required to submit a public repository. Instead, a detailed review of your project through a Loom video is acceptable, where you can demonstrate the functionality and discuss the technologies used without exposing confidential data.
 
 ---
+
+**Changes Made:**
+- Updated Python version to '3.12.3' in the workflow file.
+- Updated 'openai' version to '1.23.6' and 'pydantic' version to '2.7.1' in the requirements.txt file.
+- Removed 'langchain-core', 'langchain-openai', 'langsmith', 'orjson', 'packaging', 'pydantic', 'PyYAML', 'regex', 'tenacity', 'tiktoken', 'setuptools', 'wheel' from requirements.txt and added 'langchain_openai', 'langchain_core', 'langchain_community', 'setuptools', 'wrapt'.
+
+**Commit Messages:**
+1. Updating pydantic core
+2. Merge branch 'main' of https://github.com/drsullivan13/ai-school-tech-writer into update
+3. Updates requirements and git workflow to use python version that works
