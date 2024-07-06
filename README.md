@@ -21,3 +21,10 @@ Embrace your creativity and personalize this project to craft a solution that un
 - **Sensitive Information:** If your implementation involves sensitive information, you are not required to submit a public repository. Instead, a detailed review of your project through a Loom video is acceptable, where you can demonstrate the functionality and discuss the technologies used without exposing confidential data.
 
 ---
+
+**Changes Made:**
+- Updated the `requirements.txt` file to fix a formatting issue.
+- Removed the `langchain_pinecone` and `random` dependencies.
+
+**Reason for Changes:**
+The changes were made to correct the formatting in the `requirements.txt` file and remove unnecessary dependencies that were no longer needed for the project. Keeping the dependencies updated and relevant is essential for maintaining a streamlined and efficient development environment.
