@@ -37,6 +37,8 @@ def call_openai(prompt):
     try:
         messages = [
             {
+                # Want to update this system prompt to tell it not to just create a list of changes, but to actually update the README
+                # with the content of the changes.
                 "role": "system",
                 "content": "You are an AI trained to help with updating README files based on code changes.",
             },
