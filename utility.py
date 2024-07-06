@@ -1,5 +1,6 @@
 import os
 import base64
+from random import randint
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import OpenAIEmbeddings
@@ -42,7 +43,7 @@ def format_data_for_openai(diffs, readme_content, commit_messages):
         f"{commit_messages}"
         "Here is the current README file content:\n"
         f"{readme_content}\n"
-        "Consider the code changes from the Pull Request (including changes in docstrings and other metadata), and the commit messages. Determine if the README needs to be updated. If so, edit the README, ensuring to maintain its existing style and clarity.\n"
+        "Consider the code changes from the Pull Request (including changes in docstrings and other metadata), and the commit messages. Determine if the README needs to be updated. If so, edit the README to reflect the changes to the capabilities of which the repository offers, ensuring to maintain its existing style and clarity.\n"
         "Updated README:\n"
     )
 
@@ -62,8 +63,6 @@ def call_openai(prompt, context):
             {
                 "role": "system",
                 "content": """
-                        You are a senior software devloper.
-                        You are working on a project with a team of developers.
                         Your task is to update the README file of the project, according to the changes made in a pull request.
                         You shouldn't add a list of changed files to the README file, you need to update the content of the README file to reflect the code in the repository in general.
                         You will be provided with
@@ -96,7 +95,7 @@ def update_readme_and_create_pr(repo, updated_readme, readme_sha):
 
     commit_message = "Proposed README update based on recent code changes"
     main_branch = repo.get_branch("main")
-    new_branch_name = f"update-readme-{readme_sha[:10]}"
+    new_branch_name = f"update-readme-{randint(0,10)}-{readme_sha[:10]}"
     new_branch = repo.create_git_ref(
         ref=f"refs/heads/{new_branch_name}", sha=main_branch.commit.sha
     )
