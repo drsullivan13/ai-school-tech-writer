@@ -1,7 +1,7 @@
 import os
 from github import Github
 from dotenv import load_dotenv
-# from utility import *
+from utility import *
 
 load_dotenv()
 
