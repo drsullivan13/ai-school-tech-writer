@@ -4,7 +4,6 @@ from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import OpenAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
-from langchain.prompts.prompt import PromptTemplate, SystemPromptTemplate
 
 PINECONE_INDEX = os.getenv("PINECONE_INDEX")
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
