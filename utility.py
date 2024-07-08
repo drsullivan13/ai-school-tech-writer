@@ -9,7 +9,7 @@ from langchain_pinecone import PineconeVectorStore
 PINECONE_INDEX = os.getenv("PINECONE_INDEX")
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
-def retrieve_relevant_context(commit_messages):
+def retrieve_relevant_context():
     prompt = """
         What are important aspects of a README file? And what are the best ways to keep it up to date?
     """
