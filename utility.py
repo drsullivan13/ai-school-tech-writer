@@ -39,8 +39,6 @@ def format_data_for_openai(diffs, readme_content, commit_messages):
         "Please review the following code changes and commit messages from a GitHub pull request:\n"
         "Code changes from Pull Request:\n"
         f"{changes}\n"
-        "Commit messages:\n"
-        f"{commit_messages}"
         "Here is the current README file content:\n"
         f"{readme_content}\n"
         "Consider the code changes from the Pull Request (including changes in docstrings and other metadata), and the commit messages. Determine if the README needs to be updated. If so, edit the README to reflect the changes to the capabilities of which the repository offers, ensuring to maintain its existing style and clarity.\n"
@@ -51,20 +49,16 @@ def format_data_for_openai(diffs, readme_content, commit_messages):
 
     return prompt
 
-# I want to pull documents from the web around creating a good README file, tips for keeping on up to date, and examples of good READMEs
-# I will store these documents in a vector database to be able to use as context on queries
-# I will pull the recent commits from github to be able to see the changes in the codebase
-# I will look across the entire repository to gain context for what the application is and does
-# I will use all of this information to then generate updates to the README
 def call_openai(prompt, context):
     client = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     try:
         messages = [
             {
                 "role": "system",
-                "content": """
-                        Your task is to update the README file of the project, according to the changes made in a pull request.
-                        You shouldn't add a list of changed files to the README file, you need to update the content of the README file to reflect the code in the repository in general.
+                "content": f"""
+                        You are a technical document  writer. Your goal is to ensure that the README file that is presented to you contains accurate information representing what the application does. 
+                        Given context of a change that is being made to an application, decide if the contents of the README need to be updated to reflect the change. 
+                        You should not add a list of changed files to the README file, you need to update the content of the README file to reflect the code in the repository in general.
                         You will be provided with
                         1. A list of changed files in the pull request, including the file name and the changes made.
                         2. The current content of the README file.
