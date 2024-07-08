@@ -42,7 +42,7 @@ def main():
 
     # Get the context from the vector store
     # based on the commit messages and a system prompt get context for creating a good readme update
-    context = retrieve_relevant_context(commit_messages)
+    context = retrieve_relevant_context("What are important aspects of a README file? And what are the best ways to keep it up to date?")
 
     # Format data for OpenAI prompt
     prompt = format_data_for_openai(pull_request_diffs, readme_content, commit_messages)
@@ -51,7 +51,7 @@ def main():
     updated_readme = call_openai(prompt, context)
 
     # Create PR for Updated PR
-    update_readme_and_create_pr(repo, updated_readme, readme_content.sha)
+    update_readme_and_create_pr(repo, updated_readme, readme_content.sha, "Update README based on recent changes")
 
 if __name__ == '__main__':
     main()
