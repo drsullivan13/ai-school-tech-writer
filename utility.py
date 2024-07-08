@@ -78,7 +78,7 @@ def call_openai(prompt, context):
     except Exception as e:
         print(f"Error making OpenAI API call: {e}")
 
-def update_readme_and_create_pr(repo, updated_readme, readme_sha):
+def update_readme_and_create_pr(repo, updated_readme, readme_sha, pr_title):
     """
     Submit Updated README content as a PR in a new branch
     """
@@ -100,7 +100,6 @@ def update_readme_and_create_pr(repo, updated_readme, readme_sha):
     )
 
     # Create a PR
-    pr_title = "Update README based on recent changes"
     br_body = "This PR proposes an update to the README based on recent code changes. Please review and merge if appropriate."
     pull_request = repo.create_pull(
         title=pr_title, body=br_body, head=new_branch_name, base="main"

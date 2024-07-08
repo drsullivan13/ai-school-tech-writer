@@ -97,7 +97,7 @@ def main():
     updated_readme = call_openai(prompt, context)
 
     # Create PR for Updated PR
-    update_readme_and_create_pr(repo, updated_readme, readme_content.sha)
+    update_readme_and_create_pr(repo, updated_readme, readme_content.sha, "Remake README based on entire application")
 
 if __name__ == '__main__':
     main()
