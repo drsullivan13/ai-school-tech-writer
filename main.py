@@ -42,7 +42,7 @@ def main():
 
     # Get the context from the vector store
     # based on the commit messages and a system prompt get context for creating a good readme update
-    context = retrieve_relevant_context()
+    context = retrieve_relevant_context("What are important aspects of a README file? And what are the best ways to keep it up to date?")
 
     # Format data for OpenAI prompt
     prompt = format_data_for_openai(pull_request_diffs, readme_content, commit_messages)

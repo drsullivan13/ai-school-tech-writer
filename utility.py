@@ -9,14 +9,10 @@ from langchain_pinecone import PineconeVectorStore
 PINECONE_INDEX = os.getenv("PINECONE_INDEX")
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
-def retrieve_relevant_context():
-    prompt = """
-        What are important aspects of a README file? And what are the best ways to keep it up to date?
-    """
-
+def retrieve_relevant_context(message):
     document_vectorstore = PineconeVectorStore(index_name=PINECONE_INDEX, embedding=embeddings)
     retriever = document_vectorstore.as_retriever()
-    context = retriever.get_relevant_documents(prompt)
+    context = retriever.get_relevant_documents(message)
     return context
 
 
