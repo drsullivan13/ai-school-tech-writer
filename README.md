@@ -21,3 +21,19 @@ Embrace your creativity and personalize this project to craft a solution that un
 - **Sensitive Information:** If your implementation involves sensitive information, you are not required to submit a public repository. Instead, a detailed review of your project through a Loom video is acceptable, where you can demonstrate the functionality and discuss the technologies used without exposing confidential data.
 
 ---
+
+## README Update Automation
+This repository now includes automation for updating the README file after a pull request is merged. The automation process involves running a Python script to generate a remade README based on the merged pull request. This ensures that the README remains accurate and reflects the latest changes in the project.
+
+### Automation Details
+- Name: README Update Automation
+- Trigger: Triggered when a pull request is closed
+- Steps:
+  1. Checkout the repository
+  2. Set up Python using the latest stable version
+  3. Install Python dependencies
+  4. Extract PR Number and Commit SHA from the GitHub event context
+  5. Generate Remade README using a Python script
+  6. Enable Debug Logging for troubleshooting purposes
+
+This automation enhances the project's development process by keeping the README up-to-date with the latest changes, ensuring that users have access to accurate and relevant documentation.
